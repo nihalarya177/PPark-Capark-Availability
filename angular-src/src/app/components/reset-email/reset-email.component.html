@@ -1,0 +1,21 @@
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="reset-email.component.css">
+    </head>
+    <body>
+            <div class="loginbox">
+                <img src="../../../assets/ppark.jpg" class="avatar" />
+            </div>
+            <form [formGroup]="userForm"  class="box" action="index.html" method="post" (submit) = "OnSubmitEmail(userForm)">
+                <h1>Reset Email</h1>
+                <input formControlName="email" type="text" name="email" id="email" placeholder="Email ID" #email class="form-control">
+                <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" >
+                <small *ngIf="f['email'].errors?.['required'] && userForm.get('email')?.touched" class="error" class="text-danger">Email is Required</small>
+                <small *ngIf="f['email'].errors?.['email'] && userForm.get('email')?.touched" class="error" class="text-danger">Email is Invalid</small>
+                </div>
+                <input [disabled]="userForm.invalid" type="submit" name="" value="Submit">
+            </form>
+    </body>
+</html>

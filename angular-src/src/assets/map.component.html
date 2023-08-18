@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="map.component.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Simple Map</title>
+  <!--script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGjj3BV0BV-98KQdVzdHCw7t1wDXQf_9A&libraries=places"></script-->
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+</head>
+
+  
+<body>
+
+
+  <nav class="navbar navbar-dark">
+      <img src="../../../assets/logo.png" 
+           width="150"
+           height="53.57"
+           padding="0">
+      <ul id="navbar-nav">
+          <li class="nav-item">
+            <form class="search" autocomplete="off" action="/action_page.php">
+              <div class="autocomplete" style="width: 300px;">
+              <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+              </div>            
+            </form>
+          </li>
+          <li class="nav-item" *ngIf="values!=null">
+            <button type="button" class="button-9" (click)="favLocations($event)">
+              <div class="favtext" *ngIf="!starIsBlack">
+                Favourite
+                <span class="favorite-star-character">&#x2605;</span>
+              </div>
+              <div class="favtext" *ngIf="starIsBlack">
+                Favourite
+                <span class="favorite-star-character-yellow">&#x2605;</span>
+              </div>
+            </button>
+          </li>
+          <li class="nav-item">
+            <select class="button-9" (change)="selectChangeHandler($event)">
+              <option value="all" data-thumbnail="../../assets/parking.png">
+                All
+              </option>
+              <option value="carpark">
+                Car Park
+              </option>
+              <option value="petrol">
+                Petrol Station
+              </option>
+            </select>
+          </li>
+
+          <li class="nav-item">
+            <a id="favorites" href="#">Favourite Locations</a>
+              <!-- First Tier Drop Down -->
+              <ul id="favoritesul">
+                <div class="listOfCarparks" *ngIf="favLocationsArray.length > 0">
+                  <li id="favoritesli" style="list-style-type:none;" *ngFor="let c of favLocationsArray; let indexOfElement = index" >  
+                     <div style="padding: 2px; margin-bottom: 2px; background-color: rgb(192, 155, 155); color: rgb(0, 0, 0);" #changeBackgroundColorOfMainText>{{c}} </div>
+                     <button type="button" class="button-9" (click)= setCurrentLocationFromButton(indexOfElement)>Set Location</button>
+                  </li>
+                   </div>
+              </ul>        
+              
+          </li>
+          
+          <li class="nav-item">
+            <input type="checkbox" id="toggle-right">
+            <div class="page-wrap">
+                <div class="top-bar">
+                  <label for="toggle-right" class="profile-toggle">
+                    <span class="navbar-toggler-icon"></span></label>
+                </div>
+              <nav class="profile">
+                <h1 id="nearbyList">List of Nearby</h1>
+                <div class="listOfCarparks" *ngIf="finalCarparkList.length > 0">
+                  <li style="list-style-type:none;" *ngFor="let c of finalCarparkList">
+                  <div id="nearbyLocations2">
+                    <div id="nearbyLocations" #changeBackgroundColorOfMainText>{{c[1]}} </div>
+                    <div id="nearbyLocations1">Distance: {{c[4]}} | {{c[11]}}: {{c[8]}} </div>
+                    <button type="button" (click)="w3_change()" (click)="changeDirections(c[1], c[4], c[8], c[9], c[10], c[2], c[3], c[11], c[12])" class="button-8" #changeDirectionToReset>Directions</button>
+                  </div>
+                    
+                  </li>
+                </div>
+              </nav>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <button type="button" class="button-9" href="profile">Profile</button>
+          </li>
+          <li id="remove">Hel</li>
+      </ul>     
+    </nav>
+    
+
+    <div id="main" #main>
+    
+    <div class="w3-container">
+      <div class="map"  #map>
+      <agm-map  [latitude]='latitude' [longitude]='longitude' [zoom]='zoom' [styles]="Styles" #map1>
+        <agm-marker [latitude]='latitude'  [longitude]='longitude' [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)"
+          ></agm-marker>
+          <agm-marker *ngFor="let c of finalCarparkList1" [latitude]="c[9]"
+                [longitude]="c[10]" [iconUrl] = "c[12]"><!--  -->
+                <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                    <ng-template>
+                        <span >
+                            {{c[1]}}
+                            Distance: {{c[4]}} 
+                            {{c[11]}}: {{c[8]}}
+                            <button (click)="changeDirections(c[1], c[4], c[8], c[9], c[10], c[2], c[3], c[11], c[12])"> Directions </button>
+                        </span>
+                    </ng-template>
+                  </agm-snazzy-info-window>
+            </agm-marker>
+               <agm-direction 
+          [origin]='destination' 
+          [destination]='origin'
+          [renderOptions]="renderOptions" 
+          [markerOptions]="markerOption"
+          [visible] = 'directionVisible'
+          >
+    </agm-direction>
+      </agm-map>
+    
+      <div *ngIf = "showButton == true">
+      <button (click) = showAll()> Reset </button></div>
+      
+    </div> 
+    </div>
+    </div>
+      
+
+
+
+  <script src="/index" , type='text/javascript'></script>
+  <!--script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGjj3BV0BV-98KQdVzdHCw7t1wDXQf_9A&&libraries=places&callback=initMap">
+</script-->
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
+
+
+</body>
+
+</html>

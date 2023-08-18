@@ -1,0 +1,55 @@
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="startpage.component.css">
+    </head>
+    <body>
+        <div class="main">
+        <div class="box-row">
+            <div class="loginbox">
+                <img src="../../../assets/ppark.jpg" class="avatar" />
+            </div>
+            <div class="vertical1"></div>
+        </div>
+        <div class="box-row">
+            <form [formGroup]="userForm" (submit)="setValue(username.value, password.value)" class="box" action="#">
+                <h1>Welcome</h1>
+                <input formControlName="username" type="text" name="username" id="username" placeholder="Username" class="form-control" #username>
+                <small *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched" class="error" class="text-danger">Username is Required</small>
+                <input formControlName="password" type="password" name="password" id="password" placeholder="Password" class="form-control" #password>
+                <small *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched" class="text-danger">Password is Required</small>                
+                <input [disabled]="userForm.invalid" type="submit" name="" value="Login">
+                <a href="forgot_password">Forgot Password?</a>
+            </form>
+            <div class="vertical"></div>
+            <div class="box2">
+                <div class="alt-box1">
+                    <a class="text">Login as</a>
+                    <a href="map" (click)="onGuestClick"><u>Guest</u></a>
+                </div>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <div class="alt-box1">
+                    <a class="text2">Don't have an account with us?</a>
+                </div>
+                <div class="alt-box2">
+                    <a class="text3">Sign up </a>
+                    <a href="register"><u>here</u></a>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+html{
+    height: 100%;
+}
+body{
+    margin: auto;
+    padding-top: 240px;
+    background: url(../Background.jpg) no-repeat center;
+
+    min-height: 100vh;
+    vertical-align: middle;
+}
+.loginbox{
+    width:425px;
+    padding: 25px;
+    position: relative;
+    top: 50%;
+    left:40%;
+    transform: translate()-50%, -50%;
+    background: rgb(20, 20, 20);
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    max-height: 200px;
+    vertical-align: center;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.box{
+    width:425px;
+    padding: 30px 10px;
+    position: relative;
+    top: 50%;
+    left: 40%;
+    transform: translate()-50%, -50%;
+    background: rgb(20, 20, 20);
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.box .form-control.ng-touched.ng-invalid{
+    border: 2px solid rgb(206, 59, 59);
+}
+.box h1{
+    color: rgb(139, 139, 139);
+    text-transform: none;
+    font-weight: 500;
+}
+
+.random{
+    padding:20px
+}
+
+.box h2{
+    color: rgb(139, 139, 139);
+    text-transform: none;
+    font-weight: 500;
+    padding-top: 40px;
+}
+.box input[type="text"].form-control.ng-touched.ng-invalid,.box input[type="password"].form-control.ng-touched.ng-invalid{
+    border: 0;
+    background: none;
+    display: block;
+    margin-top: 36px;
+    margin-bottom: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 2px solid rgb(206, 59, 59);
+    padding: 16px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input[type="text"],.box input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin-top : 40px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 2px solid #19495F;
+    padding: 16px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box small{
+    border: 0;
+    margin: 10px auto;
+    margin-top: 20px;
+}
+
+.box input[type="text"]:focus,.box input[type="password"]:focus{
+    width: 275px;
+    border-color: rgb(139, 139, 139);
+    padding: 16px 10px;
+}
+.box input[type = "submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 30px auto ;
+    text-align: left;
+    border: 2px solid rgb(139, 139, 139);
+    width: 120px;
+    padding: 12px 40px;
+    outline: none;
+    color: rgb(241, 235, 235);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.box input[type= "submit"]:hover{
+    background: rgb(139, 139, 139);
+}
+.box input[type= "submit"]:disabled{
+    background: rgb(66, 62, 62);
+}
+.box a{
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(139, 139, 139);
+}
+.box a:hover{
+    text-decoration: none;
+    font-size: 16px;
+    color:#19495F;
+}
+.box a:focus{
+    text-decoration: none;
+    font-size: 16px;
+    color:#19495F;
+    border-color: none;
+}
+.vertical{
+    border-left: 2px solid white;
+    height: 550px;
+    position: relative;
+    left: 27%;
+    float: left;
+}
+.vertical1{
+    border-left: 2px solid white;
+    height: 100px;
+    position: relative;
+    left: 27%;
+    float: left;
+}
+.box-row{
+    display: flex;
+    flex-direction: row;
+}
+.box2{
+    width:425px;
+    padding: 30px 10px;
+    position: relative;
+    top: 50%;
+    left: 35%;
+    transform: translate()-50%, -50%;
+    background: rgb(20, 20, 20);
+    text-align: center;
+    border-radius: 15px;
+    max-height: 350px;
+    margin-top: 40px;
+}
+.alt-box1{
+    display: flex;
+    flex-direction: row;
+}
+
+.text{
+    color: white;
+    font-size: 16px;
+    margin-left: 45px;
+}
+.alt-box1 a{
+    color: rgb(180, 177, 177);
+    font-size: 16px;
+    text-align: left;
+    padding-top: 55px;
+    padding-left: 5px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text2{
+    color: white;
+    font-size: 16px;
+    margin-left: 45px;
+}
+.text3{
+    color: white;
+    font-size: 16px;
+}
+.alt-box2 a{
+    color: rgb(180, 177, 177);
+    font-size: 16px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+    align-items: center ;
+}
+
+

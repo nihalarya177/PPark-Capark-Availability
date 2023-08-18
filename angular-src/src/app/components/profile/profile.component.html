@@ -1,0 +1,21 @@
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="profile.component.css">
+    </head>
+    <body>
+            <div class="loginbox">
+                <img src="../../../assets/ppark.jpg" class="avatar" />
+            </div>
+            <form (submit)="onSubmit()" class="box" action="index.html" method="post">
+                <h1>{{values.username}}</h1>
+                <h2>{{values.email}}</h2>
+                <div class = "random">
+                <a href="reset-email">Reset Email</a>
+                </div>
+                <a href="change-password">Change Password</a>
+                <input type="submit" value="back" (click)="onSubmit()">
+            </form>
+    </body>
+</html>

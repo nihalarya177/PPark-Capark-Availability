@@ -1,0 +1,32 @@
+{
+  "name": "softwareengg",
+  "version": "1.0.0",
+  "description": "carpark and petrol station finder",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@types/googlemaps": "^3.43.3",
+    "@angular/http": "^7.2.16",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "dotenv": "^16.0.0",
+    "express": "*",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15",
+    "passport": "*",
+    "passport-jwt": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/brokercoder/softwareeng/src/master/"
+  },
+  "author": "Samarth",
+  "license": "ISC"
+}
